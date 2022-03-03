@@ -16,6 +16,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen/index';
 import PlusScreen from '../screens/PlusScreen/index';
+import DailyLessonScreen from '../screens/DailyLessonScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -41,6 +42,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Daily" component={DailyLessonScreen} options={{ title: 'Voilà la leçon !' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
       </Stack.Group>
     </Stack.Navigator>
