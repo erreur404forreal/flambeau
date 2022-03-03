@@ -7,7 +7,7 @@ import LessonPanel from '../../components/LessonPanel';
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   return (
-    <View style={styles.container}>
+    <View>
       <LessonPanel/>
     </View>
   );

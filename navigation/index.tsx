@@ -13,7 +13,6 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen/index';
 import PlusScreen from '../screens/PlusScreen/index';
@@ -24,7 +23,8 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -42,7 +42,6 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -62,6 +61,19 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: {
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 0,
+          },
+          shadowOpacity: 0.53,
+          shadowRadius: 13.97,
+
+          elevation: 21,
+      },
       }}>
       <BottomTab.Screen
         name="Home"
@@ -69,20 +81,6 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Acceuil',
           tabBarIcon: ({ color }) => <AntDesign name="home" size={30} color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
         })}
       />
       <BottomTab.Screen
