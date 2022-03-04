@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-
+  scrollView: {
+    marginHorizontal: 10,
+  },
   });
 
   export default styles;
